@@ -1,0 +1,82 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.general-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    min-height: 95vh;
+}
+
+
+.textarea {
+    max-width: 1200px;
+    width: 100%;
+    height: 100px;
+    border: solid black 2px;
+}
+
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 1200px;
+    height: 320px;
+    padding: 5px 0;
+    border: solid black 2px;
+    background: rgb(221, 221, 221);
+    
+   
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.8%;
+    height: calc(20% - 5px);
+    border: solid black 2px;
+    background: white;
+}
+
+.btn13 {
+    width: 13.4%;
+}
+
+.btn14 {
+    width: 7%;
+}
+
+.btn29 {
+    width: 12%;
+}
+
+.btn41 {
+    width: 13.5%;
+}
+
+.btn42 {
+    width: 13.5%;
+}
+
+.btn54 {
+    width: 12%;
+}
+
+.btn58 {
+    width: 44.5%;
+}
+
+.text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: -20px;
+}
+
+
+
