@@ -511,10 +511,10 @@ generalContainer.insertAdjacentHTML('beforeend', `
 
 
 const textarea = document.querySelector('.textarea');
-const btn = document.querySelectorAll('.btn');
+// const btn = document.querySelectorAll('.btn');
 let keyboardLayout = localStorage.getItem('layout');
 
-if (keyboardLayout == undefined) {keyboardLayout = 'en'};
+if (keyboardLayout == undefined) {keyboardLayout = 'en'}
 
 document.onkeydown = function (event) {
     for (let i = 0; i < keyCodeExc.length; i++) {
@@ -686,7 +686,7 @@ function displayInTextareaOnclick(event) {
 
     if (event.target.classList.contains('btn41')) {
         btnCurrentValue = '';
-        let val = textarea.value;
+
         let start = textarea.selectionStart;
         let end = textarea.selectionEnd;
         let cursor = textarea.value.slice(0, start) + '\n';
