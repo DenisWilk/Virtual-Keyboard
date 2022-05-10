@@ -3,14 +3,11 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": "airbnb-base",
+    "extends": "eslint-config-airbnb-base",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "vue"
-    ],
     "rules": {
     }
 }
