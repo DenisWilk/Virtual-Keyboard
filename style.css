@@ -36,7 +36,8 @@ body {
     height: 320px;
     padding: 5px 0;
     border: solid rgb(84, 84, 84) 2px;
-    background: rgb(159, 159, 159);
+    border-radius: 5px;
+    background: rgb(112, 112, 112);
     
    
 }
@@ -49,51 +50,62 @@ body {
     height: calc(20% - 5px);
     border: solid rgb(86, 85, 85) 2px;
     border-radius: 5px;
-    background: white;
+    background: rgb(249, 249, 249);
     font-size: 1.2rem;
 }
 
 .btn:active {
-    background: rgba(76, 87, 90, 0.813);
+    background: rgba(109, 114, 115, 0.813);
     color: white;
     transform: scale(1);
     box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
+    transition-property: background, color;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
 }
 
 .btn.active {
-    background: rgba(76, 87, 90, 0.813);
+    background: rgba(109, 114, 115, 0.813);
     color: white;
     transform: scale(1);
     box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
+    transition-property: background, color;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
 }
 
 .btn13 {
     width: 13.4%;
+    background: rgb(220, 220, 220);
 }
 
 .btn14 {
     width: 7%;
+    background: rgb(220, 220, 220);
+}
+
+.btn28, .btn53, .btn55, .btn56, .btn57, .btn59, .btn60, .btn61, .btn62, .btn63 {
+    background: rgb(220, 220, 220);
 }
 
 .btn29 {
     width: 12%;
+    background: rgb(220, 220, 220);
 }
 
 .btn29.active {
-    background: rgba(71, 86, 90, 0.813);
+    background: rgba(109, 114, 115, 0.813);
     color: white;
 }
 
-.btn41 {
+.btn41, .btn42 {
     width: 13.5%;
-}
-
-.btn42 {
-    width: 13.5%;
+    background: rgb(220, 220, 220);
 }
 
 .btn54 {
     width: 12%;
+    background: rgb(220, 220, 220);
 }
 
 .btn58 {
@@ -109,6 +121,4 @@ body {
     font-weight: 400;
     margin-top: -20px;
 }
-
-
 
