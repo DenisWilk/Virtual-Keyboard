@@ -505,7 +505,17 @@ generalContainer.append(keyboardContainer);
 
 generalContainer.insertAdjacentHTML('beforeend', `
     <p class="text">The keyboard was created in Windows OS. 
-    To switch the language, use the combination: Ctrl + Alt.</p>`);
+    To switch the language, use the combination: Ctrl + Alt.
+    </p>
+    <p class="text link-text">Ветка разработки: 
+    <a href="https://github.com/DenisWilk/Virtual-Keyboard/tree/virtual-keyboard">
+    https://github.com/DenisWilk/Virtual-Keyboard/tree/virtual-keyboard</a>
+    </p>
+    <p class="text link-text">Оформление pull request:
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp      
+    <a href="https://github.com/DenisWilk/Virtual-Keyboard/pull/2">
+    https://github.com/DenisWilk/Virtual-Keyboard/pull/2</a>
+    </p>`);
 
 const textarea = document.querySelector('.textarea');
 let keyboardLayout = localStorage.getItem('layout');
