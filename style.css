@@ -56,11 +56,15 @@ body {
 .btn:active {
     background: rgba(76, 87, 90, 0.813);
     color: white;
+    transform: scale(1);
+    box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
 }
 
 .btn.active {
     background: rgba(76, 87, 90, 0.813);
     color: white;
+    transform: scale(1);
+    box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
 }
 
 .btn13 {

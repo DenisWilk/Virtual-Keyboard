@@ -511,7 +511,6 @@ generalContainer.insertAdjacentHTML('beforeend', `
 
 
 const textarea = document.querySelector('.textarea');
-// const btn = document.querySelectorAll('.btn');
 let keyboardLayout = localStorage.getItem('layout');
 
 if (keyboardLayout == undefined) {keyboardLayout = 'en'}
@@ -536,7 +535,7 @@ function createKeyboardBtns() {
 
     for (let i = 0; i < keyCode.length; i++) {
         keyboardContainer.insertAdjacentHTML('beforeend', `
-        <div id="${keyCode[i]}" class="btn btn${i}" data-key="${keyCode[i]}"></div>`)
+        <button id="${keyCode[i]}" class="btn btn${i}" data-key="${keyCode[i]}"></button>`)
 
     }
     createKeyboardLayout();
