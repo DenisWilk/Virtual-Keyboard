@@ -513,6 +513,7 @@ generalContainer.insertAdjacentHTML('beforeend', `
 const textarea = document.querySelector('.textarea');
 const btn = document.querySelectorAll('.btn');
 let keyboardLayout = 'en';
+keyboardLayout = localStorage.getItem('layout');
 
 
 document.onkeydown = function (event) {
@@ -547,12 +548,16 @@ function changeKeyboardLang() {
 
     if (keyboardLayout === 'en') {
         keyboardLayout = 'by';
+        localStorage.setItem('layout', keyboardLayout);
     } else if (keyboardLayout === 'by') {
-        keyboardLayout = 'en'
+        keyboardLayout = 'en';
+        localStorage.setItem('layout', keyboardLayout);
     } else if (keyboardLayout === 'enCaps') {
         keyboardLayout = 'byCaps';
+        localStorage.setItem('layout', 'by');
     } else if (keyboardLayout === 'byCaps') {
         keyboardLayout = 'enCaps';
+        localStorage.setItem('layout', 'en');
     }
 
     createKeyboardLayout();
@@ -567,7 +572,7 @@ document.addEventListener('keydown', function (event) {
 
 function changeKeyboardCaps() {
 
-const capsKey = document.querySelector('.btn29');
+    const capsKey = document.querySelector('.btn29');
 
     if (keyboardLayout === 'en') {
         keyboardLayout = 'enCaps';
@@ -589,29 +594,42 @@ const capsKey = document.querySelector('.btn29');
     createKeyboardLayout();
 }
 document.addEventListener('keyup', function (event) {
-    if (event.code == 'CapsLock') {
+    if (event.code === 'CapsLock') {
         changeKeyboardCaps();
     }
 });
 
 
 const shiftBtns = document.querySelectorAll('.btn42, .btn54');
+let capsStatus;
 
 function changeKeyboardShiftOn() {
     if (keyboardLayout === 'en') {
+        capsStatus = 'off';
         keyboardLayout = 'enShift';
     } else if (keyboardLayout === 'by') {
-        keyboardLayout = 'byShift'
+        capsStatus = 'off';
+        keyboardLayout = 'byShift';
+    }else if (keyboardLayout === 'enCaps') {
+        capsStatus = 'on';
+        keyboardLayout = 'enShift';
+    }else if (keyboardLayout === 'byCaps') {
+        capsStatus = 'on';
+        keyboardLayout = 'byShift';
     }
 
     createKeyboardLayout();
 }
 
 function changeKeyboardShiftOff() {
-    if (keyboardLayout === 'enShift') {
+    if (keyboardLayout === 'enShift' && capsStatus === 'off') {
         keyboardLayout = 'en';
-    } else if (keyboardLayout === 'byShift') {
+    } else if (keyboardLayout === 'byShift' && capsStatus === 'off') {
         keyboardLayout = 'by';
+    }else if (keyboardLayout === 'enShift' && capsStatus === 'on') {
+        keyboardLayout = 'enCaps';
+    }else if (keyboardLayout === 'byShift' && capsStatus === 'on') {
+        keyboardLayout = 'byCaps';
     }
 
     createKeyboardLayout();
@@ -645,7 +663,9 @@ function displayInTextareaOnclick(event) {
 
     if (event.target.classList.contains('btn13')) {
         btnCurrentValue = '';
-        textarea.value = textarea.value.slice(0, [textarea.length] - 1);
+        let pos = textarea.selectionStart;
+        textarea.value = textarea.value.slice(0, pos - 1) + textarea.value.slice(pos);
+        textarea.setSelectionRange(pos - 1, pos - 1);
     }
 
     if (event.target.classList.contains('btn14')) {
@@ -654,7 +674,9 @@ function displayInTextareaOnclick(event) {
 
     if (event.target.classList.contains('btn28')) {
         btnCurrentValue = '';
-        textarea.value = textarea.value.slice(0, [textarea.length] - 1);
+        let pos = textarea.selectionStart;
+        textarea.value = textarea.value.slice(0, pos) + textarea.value.slice(pos + 1);
+        textarea.setSelectionRange(pos, pos);
     }
 
     if (event.target.classList.contains('btn29')) {
@@ -667,26 +689,21 @@ function displayInTextareaOnclick(event) {
         let val = textarea.value;
         let start = textarea.selectionStart;
         let end = textarea.selectionEnd;
-        let curs = val.substring(0, start) + '\n';
+        let cursor = textarea.value.slice(0, start) + '\n';
 
-        textarea.value = val.substring(0, start) + '\n' + val.substring(end, val.length);
+        textarea.value = textarea.value.slice(0, start) + '\n' +
+            textarea.value.slice(end, textarea.value.length);
         textarea.focus();
-        textarea.setSelectionRange(curs.length, curs.length);
+        textarea.setSelectionRange(cursor.length, cursor.length);
     }
 
     if (event.target.classList.contains('btn42') ||
-        event.target.classList.contains('btn54')) {
-        btnCurrentValue = '';
-    }
-
-    if (event.target.classList.contains('btn55') ||
+        event.target.classList.contains('btn54') ||
+        event.target.classList.contains('btn55') ||
+        event.target.classList.contains('btn56') ||
         event.target.classList.contains('btn57') ||
         event.target.classList.contains('btn59') ||
         event.target.classList.contains('btn63')) {
-        btnCurrentValue = '';
-    }
-
-    if (event.target.classList.contains('btn56')) {
         btnCurrentValue = '';
     }
 
@@ -710,12 +727,12 @@ function displayInTextareaOnkeydown(event) {
         if (event.code === keyId.id) return;
     }
 
-    if(event.code === 'Tab') {
+    if (event.code === 'Tab') {
         textarea.value += '    ';
         return;
     }
 
-    if(event.code === 'AltLeft' || event.code === 'AltRight') {
+    if (event.code === 'AltLeft' || event.code === 'AltRight') {
         textarea.value += '';
         return;
     }
@@ -732,29 +749,28 @@ document.addEventListener('keydown', displayInTextareaOnkeydown);
 
 function animationBtnOn(event) {
 
-    if(event.code === 'CapsLock') return;
+    if (event.code === 'CapsLock') return;
 
     for (let i = 0; i < keyCode.length; i++) {
         keyId = document.getElementById(`${keyCode[i]}`);
-        if (event.code === keyId.id) { 
-            keyId.classList.add('active'); 
+        if (event.code === keyId.id) {
+            keyId.classList.add('active');
         }
     }
 }
 function animationBtnOff(event) {
 
-    if(event.code === 'CapsLock') return;
-    
+    if (event.code === 'CapsLock') return;
+
     for (let i = 0; i < keyCode.length; i++) {
         keyId = document.getElementById(`${keyCode[i]}`);
-        if (event.code === keyId.id) { 
+        if (event.code === keyId.id) {
             keyId.classList.remove('active');
-         }
+        }
     }
 }
 document.addEventListener('keydown', animationBtnOn);
 document.addEventListener('keyup', animationBtnOff);
-
 
 
 function getKeyCode(event) {
