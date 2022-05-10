@@ -512,9 +512,9 @@ generalContainer.insertAdjacentHTML('beforeend', `
 
 const textarea = document.querySelector('.textarea');
 const btn = document.querySelectorAll('.btn');
-let keyboardLayout = 'en';
-keyboardLayout = localStorage.getItem('layout');
+let keyboardLayout = localStorage.getItem('layout');
 
+if (keyboardLayout == undefined) {keyboardLayout = 'en'};
 
 document.onkeydown = function (event) {
     for (let i = 0; i < keyCodeExc.length; i++) {
