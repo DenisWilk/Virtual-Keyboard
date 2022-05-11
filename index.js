@@ -290,6 +290,73 @@ const keyValueObj = {
     ControlRight: 'Ctrl',
   },
 
+  enShiftCaps: {
+    Backquote: '~',
+    Digit1: '!',
+    Digit2: '@',
+    Digit3: '#',
+    Digit4: '$',
+    Digit5: '%',
+    Digit6: '^',
+    Digit7: '&',
+    Digit8: '*',
+    Digit9: '(',
+    Digit0: ')',
+    Minus: '_',
+    Equal: '+',
+    Backspace: 'Backspace',
+    Tab: 'Tab',
+    KeyQ: 'q',
+    KeyW: 'w',
+    KeyE: 'e',
+    KeyR: 'r',
+    KeyT: 't',
+    KeyY: 'y',
+    KeyU: 'u',
+    KeyI: 'i',
+    KeyO: 'o',
+    KeyP: 'p',
+    BracketLeft: '{',
+    BracketRight: '}',
+    Backslash: '|',
+    Delete: 'Del',
+    CapsLock: 'CapsLock',
+    KeyA: 'a',
+    KeyS: 's',
+    KeyD: 'd',
+    KeyF: 'f',
+    KeyG: 'g',
+    KeyH: 'h',
+    KeyJ: 'j',
+    KeyK: 'k',
+    KeyL: 'l',
+    Semicolon: ':',
+    Quote: '"',
+    Enter: 'Enter',
+    ShiftLeft: 'Shift',
+    KeyZ: 'z',
+    KeyX: 'x',
+    KeyC: 'c',
+    KeyV: 'v',
+    KeyB: 'b',
+    KeyN: 'n',
+    KeyM: 'm',
+    Comma: '<',
+    Period: '>',
+    Slash: '?',
+    ArrowUp: 'ᐃ',
+    ShiftRight: 'Shift',
+    ControlLeft: 'Ctrl',
+    MetaLeft: 'Win',
+    AltLeft: 'Alt',
+    Space: '',
+    AltRight: 'Alt',
+    ArrowLeft: 'ᐊ',
+    ArrowDown: 'ᐁ',
+    ArrowRight: 'ᐅ',
+    ControlRight: 'Ctrl',
+  },
+
   by: {
     Backquote: 'ё',
     Digit1: '1',
@@ -490,6 +557,73 @@ const keyValueObj = {
     ArrowRight: 'ᐅ',
     ControlRight: 'Ctrl',
   },
+
+  byShiftCaps: {
+    Backquote: 'ё',
+    Digit1: '!',
+    Digit2: '"',
+    Digit3: '№',
+    Digit4: ';',
+    Digit5: '%',
+    Digit6: ':',
+    Digit7: '?',
+    Digit8: '*',
+    Digit9: '(',
+    Digit0: ')',
+    Minus: '_',
+    Equal: '+',
+    Backspace: 'Backspace',
+    Tab: 'Tab',
+    KeyQ: 'й',
+    KeyW: 'ц',
+    KeyE: 'у',
+    KeyR: 'к',
+    KeyT: 'е',
+    KeyY: 'н',
+    KeyU: 'г',
+    KeyI: 'ш',
+    KeyO: 'ў',
+    KeyP: 'з',
+    BracketLeft: 'х',
+    BracketRight: 'ъ',
+    Backslash: '/',
+    Delete: 'Del',
+    CapsLock: 'CapsLock',
+    KeyA: 'ф',
+    KeyS: 'ы',
+    KeyD: 'в',
+    KeyF: 'а',
+    KeyG: 'п',
+    KeyH: 'р',
+    KeyJ: 'о',
+    KeyK: 'л',
+    KeyL: 'д',
+    Semicolon: 'ж',
+    Quote: 'э',
+    Enter: 'Enter',
+    ShiftLeft: 'Shift',
+    KeyZ: 'я',
+    KeyX: 'ч',
+    KeyC: 'с',
+    KeyV: 'м',
+    KeyB: 'i',
+    KeyN: 'т',
+    KeyM: 'ь',
+    Comma: 'б',
+    Period: 'ю',
+    Slash: ',',
+    ArrowUp: 'ᐃ',
+    ShiftRight: 'Shift',
+    ControlLeft: 'Ctrl',
+    MetaLeft: 'Win',
+    AltLeft: 'Alt',
+    Space: '',
+    AltRight: 'Alt',
+    ArrowLeft: 'ᐊ',
+    ArrowDown: 'ᐁ',
+    ArrowRight: 'ᐅ',
+    ControlRight: 'Ctrl',
+  },
 };
 
 const generalContainer = document.createElement('div');
@@ -511,8 +645,8 @@ generalContainer.insertAdjacentHTML('beforeend', `
     <a href="https://github.com/DenisWilk/Virtual-Keyboard/tree/virtual-keyboard">
     https://github.com/DenisWilk/Virtual-Keyboard/tree/virtual-keyboard</a>
     </p>
-    <p class="text link-text">Оформление pull request:
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp      
+    <p class="text link-text">Оформленный pull request:
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp     
     <a href="https://github.com/DenisWilk/Virtual-Keyboard/pull/2">
     https://github.com/DenisWilk/Virtual-Keyboard/pull/2</a>
     </p>`);
@@ -604,10 +738,10 @@ function changeKeyboardShiftOn() {
     keyboardLayout = 'byShift';
   } else if (keyboardLayout === 'enCaps') {
     capsStatus = 'on';
-    keyboardLayout = 'enShift';
+    keyboardLayout = 'enShiftCaps';
   } else if (keyboardLayout === 'byCaps') {
     capsStatus = 'on';
-    keyboardLayout = 'byShift';
+    keyboardLayout = 'byShiftCaps';
   }
 
   createKeyboardLayout();
@@ -618,9 +752,9 @@ function changeKeyboardShiftOff() {
     keyboardLayout = 'en';
   } else if (keyboardLayout === 'byShift' && capsStatus === 'off') {
     keyboardLayout = 'by';
-  } else if (keyboardLayout === 'enShift' && capsStatus === 'on') {
+  } else if (keyboardLayout === 'enShiftCaps' && capsStatus === 'on') {
     keyboardLayout = 'enCaps';
-  } else if (keyboardLayout === 'byShift' && capsStatus === 'on') {
+  } else if (keyboardLayout === 'byShiftCaps' && capsStatus === 'on') {
     keyboardLayout = 'byCaps';
   }
 
@@ -687,12 +821,12 @@ function displayInTextareaOnclick(event) {
   }
 
   if (event.target.classList.contains('btn42')
-        || event.target.classList.contains('btn54')
-        || event.target.classList.contains('btn55')
-        || event.target.classList.contains('btn56')
-        || event.target.classList.contains('btn57')
-        || event.target.classList.contains('btn59')
-        || event.target.classList.contains('btn63')) {
+    || event.target.classList.contains('btn54')
+    || event.target.classList.contains('btn55')
+    || event.target.classList.contains('btn56')
+    || event.target.classList.contains('btn57')
+    || event.target.classList.contains('btn59')
+    || event.target.classList.contains('btn63')) {
     btnCurrentValue = '';
   }
 
